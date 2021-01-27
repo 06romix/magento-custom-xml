@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="books">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" type="bookDeclaration" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueThemeCode">
+            <xs:annotation>
+                <xs:documentation>
+                    ISBN must be unique.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="book" />
+            <xs:field xpath="@isbn" />
+        </xs:unique>
+    </xs:element>
+
+    <xs:complexType name="bookDeclaration">
+        <xs:annotation>
+            <xs:documentation>
+                Book declaration.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="isbn" type="isbnDeclaration" use="required" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="author" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:simpleType name="isbnDeclaration">
+        <xs:annotation>
+            <xs:documentation>
+                ISBN can contain only [0-9-]+.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9-]+" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

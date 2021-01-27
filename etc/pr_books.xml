@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<books xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Plumrocket_VeryImportantXml:etc/pr_books.xsd">
+    <book isbn="978-0132350884"
+          name="Clean Code: A Handbook of Agile Software Craftsmanship"
+          author="Robert C. Martin"
+    />
+</books>
